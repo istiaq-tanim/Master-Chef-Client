@@ -38,7 +38,7 @@ const Header = () => {
 
                     <li className='text-[#757575] font-semibold'>
                         <NavLink
-                            to='/jobs'
+                            to='/login'
                             className={({ isActive }) => (isActive ? 'text-[#14b93d]' : '')}
                         >
                             Login
