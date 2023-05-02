@@ -8,17 +8,20 @@ import { useEffect } from 'react';
 const AuthProvider = ({children}) => {
     const auth = getAuth(app);
     const [user,setUser]=useState(null);
+    const [loading,useLoading]=useState(true);
 
     const goggleProvider=new GoogleAuthProvider();
     const gitProvider=new GithubAuthProvider();
 
     const createUser = (email,password) =>
     {
+       useLoading(true)
        return createUserWithEmailAndPassword(auth,email,password);
     }
 
     const login = (email,password)=>
-    {
+    {   
+        useLoading(true)
         return signInWithEmailAndPassword(auth,email,password)
     }
     
@@ -26,6 +29,7 @@ const AuthProvider = ({children}) => {
       const unSubscribe =  onAuthStateChanged(auth,(currentUser)=>{
             setUser(currentUser);
             console.log("Current user",currentUser)
+            useLoading(false);
         })
 
         return ()=>
@@ -34,17 +38,20 @@ const AuthProvider = ({children}) => {
         }
     },[])
     const logOut = ()=>
-    {
+    {     
+          useLoading(true)
           return signOut(auth)
     }
 
     const goggleLogin = () =>
     {
+          useLoading(true)
           return signInWithPopup(auth,goggleProvider)
     }
 
     const gitHubLogin = () =>
-    {
+    {   
+        useLoading(true)
         return signInWithPopup(auth,gitProvider)
     }
     const authInfo={
@@ -54,7 +61,8 @@ const AuthProvider = ({children}) => {
         logOut,
         user,
         goggleLogin,
-        gitHubLogin
+        gitHubLogin,
+        loading
     }
     return (
         <UserContext.Provider value={authInfo}>
