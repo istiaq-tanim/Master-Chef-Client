@@ -10,7 +10,7 @@ const Home = () => {
       .then(data => setChefs(data));
     },[])
     return (
-        <div className='grid grid-cols-3 gap-5 my-10 w-11/12 mx-auto'>
+        <div className='grid md:grid-cols-3 gap-5 my-10 w-11/12 mx-auto'>
             {
                 chefs.map(chef => <Chefs key={chef.id} chef={chef}></Chefs>)
             }
