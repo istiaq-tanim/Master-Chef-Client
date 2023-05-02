@@ -6,6 +6,10 @@ export default {
   ],
   theme: {
     extend: {},
+    fontFamily: {
+      display: ["Pacifico", "cursive"],
+      displayRob :['Roboto Condensed', "sans-serif"]
+    },
   },
   plugins: [require("daisyui")],
 }

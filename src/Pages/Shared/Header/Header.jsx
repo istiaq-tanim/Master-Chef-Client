@@ -12,14 +12,14 @@ const Header = () => {
             <div className='relative flex items-center justify-between'>
                 {/* Logo Section */}
                 <Link to='/' className='inline-flex items-center'>
-                    <span className='ml-2 text-2xl font-bold tracking-wide text-gray-800'>
+                    <span className='ml-2 text-2xl font-bold tracking-wide text-gray-800 font-display'>
                         Master<span className='text-[#58d076]'>Chef</span>
                     </span>
                 </Link>
 
                 {/* Nav Items Section */}
                 <ul className='items-center hidden space-x-8 lg:flex'>
-                    <li className='text-[#757575] font-semibold'>
+                    <li className='text-[#757575] font-semibold font-displayRob'>
                         <NavLink
                             to='/'
                             className={({ isActive }) => (isActive ? 'text-[#14b93d]' : '')}
@@ -27,7 +27,7 @@ const Header = () => {
                             Home
                         </NavLink>
                     </li>
-                    <li className='text-[#757575] font-semibold'>
+                    <li className='text-[#757575] font-semibold font-displayRob'>
                         <NavLink
                             to='/blogs'
                             className={({ isActive }) => (isActive ? 'text-[#14b93d]' : '')}
@@ -36,7 +36,7 @@ const Header = () => {
                         </NavLink>
                     </li>
 
-                    <li className='text-[#757575] font-semibold'>
+                    <li className='text-[#757575] font-semibold font-displayRob'>
                         <NavLink
                             to='/login'
                             className={({ isActive }) => (isActive ? 'text-[#14b93d]' : '')}
