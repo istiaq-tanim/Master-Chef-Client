@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import Chefs from '../Chefs/Chefs';
 import PopularRecipes from '../PopularRecipes/PopularRecipes';
+import Swipe from '../Swiper/Swipe';
 
 
 const Home = () => {
@@ -12,13 +13,17 @@ const Home = () => {
     }, [])
     return (
         <div>
+            <Swipe></Swipe>
             <div className='grid md:grid-cols-3 gap-5 my-10 w-11/12 mx-auto'>
                 {
                     chefs.map(chef => <Chefs key={chef.id} chef={chef}></Chefs>)
                 }
             </div>
-             <PopularRecipes></PopularRecipes>
-
+            <PopularRecipes></PopularRecipes>
+            <div className="col-item col-xs-6 col-sm-6 col-md-4">
+                
+            
+            </div>
         </div>
 
 
