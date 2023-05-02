@@ -1,17 +1,54 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { FaGoogle, FaGithub } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
+import { UserContext } from '../../../providers/AuthProvider';
 
 const Login = () => {
+
+    const {login,goggleLogin,gitHubLogin} =useContext(UserContext)
 
     const [error, setError] = useState("");
     const [success, setSuccess] = useState("");
     const handleLogin = (event) => {
         event.preventDefault();
+        setSuccess('');
+        setError('');
         const form = event.target;
         const password = form.password.value;
         const email = form.email.value;
+        
+
+        login(email,password)
+        .then(result =>{
+            const user=result.user;
+            console.log(user);
+            setSuccess("Logged in Successfully");
+            form.reset();
+        })
+        .catch(error => setError(error.message))
     }
+
+    const handleGoggle = () =>
+    {
+         goggleLogin()
+         .then(result => {
+            const user=result.user;
+            console.log(user);
+         })
+         .catch(error => setError(error.message))
+    }
+    
+    const handleGithub = () =>
+    {
+        gitHubLogin()
+        .then(result => {
+            const user=result.user;
+            console.log(user);
+        })
+        .catch(error => setError(error.message))
+    }
+    
+
     return (
         <div>
             <div className="hero bg-base-200">
@@ -33,14 +70,17 @@ const Login = () => {
                                 </label>
                                 <input type="password" name='password' required placeholder="password" className="input input-bordered" />
                             </div>
+
+                            <p className='text-green-500'>{success}</p>
+                            <p className='text-red-500'>{error}</p>
                             <div className="form-control mt-2">
                                 <button className="btn btn-success text-white">Login</button>
                             </div>
 
                         </form>
 
-                        <button className="btn btn-outline w-80  mx-auto my-2"><FaGoogle className='inline-block mr-2'></FaGoogle>Sign in With Google</button>
-                        <button className="btn btn-outline w-80  mx-auto my-2"><FaGithub className='inline-block mr-2'></FaGithub>Sign in With Google</button>
+                        <button onClick={handleGoggle} className="btn btn-outline w-80  mx-auto my-2"><FaGoogle className='inline-block mr-2'></FaGoogle>Sign in With Google</button>
+                        <button onClick={handleGithub} className="btn btn-outline w-80  mx-auto my-2"><FaGithub className='inline-block mr-2'></FaGithub>Sign in With Github</button>
                         <p className='text-center'>New Member?<Link to="/register"><button className="btn btn-active px-1 py-0 btn-link">Please Register</button></Link></p>
 
                     </div>

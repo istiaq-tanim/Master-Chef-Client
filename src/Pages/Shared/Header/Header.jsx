@@ -1,14 +1,23 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import {
     Bars3BottomRightIcon,
     XMarkIcon,
 } from '@heroicons/react/24/solid'
+import { UserContext } from '../../../providers/AuthProvider';
 
 const Header = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false)
+    const { logOut, user } = useContext(UserContext);
+
+    const handleLogOut = () => {
+        logOut()
+            .then(() => {
+            })
+            .catch(error => console.log(error.message));
+    }
     return (
-        <div className='px-4 py-5 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8'>
+        <div className='px-4 pt-10 pb-5 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8'>
             <div className='relative flex items-center justify-between'>
                 {/* Logo Section */}
                 <Link to='/' className='inline-flex items-center'>
@@ -36,14 +45,24 @@ const Header = () => {
                         </NavLink>
                     </li>
 
-                    <li className='text-[#757575] font-semibold font-displayRob'>
-                        <NavLink
-                            to='/login'
-                            className={({ isActive }) => (isActive ? 'text-[#14b93d]' : '')}
-                        >
-                            Login
-                        </NavLink>
-                    </li>
+                    {user ?
+                        <>
+                            <label tabIndex={0} className="btn btn-ghost btn-circle avatar tooltip-success tooltip" data-tip={user.displayName}>
+                                <div className="w-10 rounded-full" >
+                                    <img src={user.photoURL} />
+                                </div>
+                            </label>
+                            <button onClick={handleLogOut} className='text-[#14b93d] font-semibold font-displayRob'>Sign out</button>
+                        </> :
+                        <li className='text-[#757575] font-semibold font-displayRob'>
+                            <NavLink
+                                to='/login'
+                                className={({ isActive }) => (isActive ? 'text-[#14b93d]' : '')}
+                            >
+                                Login
+                            </NavLink>
+                        </li>
+                    }
                 </ul>
                 {/* Mobile Navbar Section */}
                 <div className='lg:hidden'>

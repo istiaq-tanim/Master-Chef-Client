@@ -1,17 +1,41 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { UserContext } from '../../../providers/AuthProvider';
+import { updateProfile } from 'firebase/auth';
 
 const Register = () => {
     const [error, setError] = useState("");
     const [success, setSuccess] = useState("");
+    const {createUser}=useContext(UserContext);
     const handleRegister = (event) => {
         event.preventDefault();
+        setError('');
+        setSuccess('');
         const form = event.target;
         const userName = form.username.value;
         const photo = form.photo.value;
         const password = form.password.value;
         const email = form.email.value;
 
+        createUser(email,password)
+        .then(result =>{
+            const user=result.user;
+            userUpdate(user,userName,photo)
+            console.log(user);
+            setSuccess("You are Registered");
+            form.reset();
+        })
+        .catch(error => setError(error.message))
+        const userUpdate = (user,userName,photo) =>
+        {
+            updateProfile(user,{
+                displayName:userName,
+                photoURL:photo
+            })
+            .then(()=>{})
+            .catch(error => setError(error.message))
+        }
+        
     }
     return (
         <div>
@@ -47,6 +71,9 @@ const Register = () => {
                                 </label>
                                 <input type="password" name='password' required placeholder="password" className="input input-bordered" />
                             </div>
+                            <p className='text-green-500'>{success}</p>
+                            <p className='text-red-500'>{error}</p>
+
                             <div className="form-control mt-2">
                                 <button className="btn btn-success">Register</button>
                             </div>
