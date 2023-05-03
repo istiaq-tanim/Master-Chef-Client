@@ -106,16 +106,7 @@ const Header = () => {
                                                 Home
                                             </Link>
                                         </li>
-                                        <li>
-                                            <Link to='/statistic' className='font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-blue-400'>
-                                                Statistic
-                                            </Link>
-                                        </li>
-                                        <li>
-                                            <Link to='/jobs' className='font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-blue-400'>
-                                                Applied Job
-                                            </Link>
-                                        </li>
+                                      
 
                                         <li>
                                             <Link
@@ -127,10 +118,10 @@ const Header = () => {
                                         </li>
                                         <li>
                                             <Link
-                                                to='/about'
+                                                to='/login'
                                                 className='font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-blue-400'
                                             >
-                                                About Us
+                                                Login
                                             </Link>
                                         </li>
                                     </ul>

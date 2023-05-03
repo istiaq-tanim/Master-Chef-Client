@@ -14,13 +14,12 @@ const router = createBrowserRouter([
     {
         path: "/",
         element: <Main></Main>,
-        errorElement: <ErrorElement></ErrorElement>,
         children:
             [
                 {
                     path: "/",
                     element: <Home></Home>,
-                    loader:()=>fetch("http://localhost:5000/chefs")
+                    loader:()=>fetch("https://assignment-10-chef-server-istiaq-tanim.vercel.app/chefs")
                 },
                 {
                     path: "/blogs",
@@ -29,15 +28,15 @@ const router = createBrowserRouter([
                 {
                     path:"/:id",
                     element:<PrivateRoute><Recipes></Recipes></PrivateRoute>,
-                    loader:({params})=>fetch(`http://localhost:5000/chefs/${params.id}`)
+                    loader:({params})=>fetch(`https://assignment-10-chef-server-istiaq-tanim.vercel.app/chefs/${params.id}`)
                 },
+                { path:"*" ,element:<ErrorElement></ErrorElement>}
                
             ]
     },
     {
         path: "/",
         element: <LoginLayout></LoginLayout>,
-        errorElement: <ErrorElement></ErrorElement>,
         children: 
         [
             {
@@ -47,7 +46,8 @@ const router = createBrowserRouter([
             {
                 path: "/register",
                 element: <Register></Register>
-            }
+            },
+            { path:"*" ,element:<ErrorElement></ErrorElement>}
         ]
     }
 ])
