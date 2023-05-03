@@ -1,16 +1,17 @@
-import React, { useEffect, useState } from 'react';
 import Chefs from '../Chefs/Chefs';
 import PopularRecipes from '../PopularRecipes/PopularRecipes';
 import Swipe from '../Swiper/Swipe';
+import Loader from '../../Shared/Loader/Loader';
+import { useLoaderData, useNavigation } from 'react-router-dom';
 
-
-const Home = () => {
-    const [chefs, setChefs] = useState([]);
-    useEffect(() => {
-        fetch("http://localhost:5000/chefs")
-            .then(res => res.json())
-            .then(data => setChefs(data));
-    }, [])
+const Home = () => {    
+    const loader=useNavigation();
+    if(loader.state === 'loading')
+    {
+        return <Loader></Loader>
+    }
+    
+   const chefs=useLoaderData()
     return (
         <div>
             <Swipe></Swipe>

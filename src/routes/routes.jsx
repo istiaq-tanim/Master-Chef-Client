@@ -7,16 +7,20 @@ import Register from "../Pages/Login/Register/Register";
 import LoginLayout from "../Layouts/LoginLayout";
 import Recipes from "../Pages/Home/Chefs/Recipies/Recipes";
 import PrivateRoute from "./PrivateRoute";
+import ErrorElement from "../Pages/ErrorPage/ErrorElement";
+import Loader from "../Pages/Shared/Loader/Loader";
 
 const router = createBrowserRouter([
     {
         path: "/",
         element: <Main></Main>,
+        errorElement: <ErrorElement></ErrorElement>,
         children:
             [
                 {
                     path: "/",
                     element: <Home></Home>,
+                    loader:()=>fetch("http://localhost:5000/chefs")
                 },
                 {
                     path: "/blogs",
@@ -26,21 +30,22 @@ const router = createBrowserRouter([
                     path:"/:id",
                     element:<PrivateRoute><Recipes></Recipes></PrivateRoute>,
                     loader:({params})=>fetch(`http://localhost:5000/chefs/${params.id}`)
-                }
+                },
                
             ]
     },
     {
         path: "/",
         element: <LoginLayout></LoginLayout>,
+        errorElement: <ErrorElement></ErrorElement>,
         children: 
         [
             {
-                path: "login",
+                path: "/login",
                 element: <Login></Login>
             },
             {
-                path: "register",
+                path: "/register",
                 element: <Register></Register>
             }
         ]
