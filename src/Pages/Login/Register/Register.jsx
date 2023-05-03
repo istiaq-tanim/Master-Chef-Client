@@ -51,13 +51,13 @@ const Register = () => {
                                 <label className="label">
                                     <span className="label-text">User</span>
                                 </label>
-                                <input type="text" name="username" required placeholder="Username" className="input input-bordered" />
+                                <input type="text" name="username"  placeholder="Username" className="input input-bordered" />
                             </div>
                             <div className="form-control">
                                 <label className="label">
                                     <span className="label-text">Photo Url</span>
                                 </label>
-                                <input type="text" name="photo" required placeholder="photo" className="input input-bordered" />
+                                <input type="text" name="photo"  placeholder="photo" className="input input-bordered" />
                             </div>
                             <div className="form-control">
                                 <label className="label">

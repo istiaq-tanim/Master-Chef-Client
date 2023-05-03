@@ -3,7 +3,7 @@ import { FaThumbsUp } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 
 const Chefs = ({ chef }) => {
-    const { id, name, profile_picture,experience, num_recipes,likes} = chef
+    const { id, name, profile_picture,experience, num_recipes,likes } = chef
     return (
         <div >
             <div className="max-w-md rounded overflow-hidden shadow-lg bg-white">
