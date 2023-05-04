@@ -30,23 +30,27 @@ const router = createBrowserRouter([
                     path:"/:id",
                     element:<PrivateRoute><Recipes></Recipes></PrivateRoute>,
                     loader:({params})=>fetch(`https://assignment-10-chef-server-istiaq-tanim.vercel.app/chefs/${params.id}`)
-                }
+                },
                
-            ]
+            ],
+            
     },
+   
     {
-        path: "/",
+        path: "/auth",
         element: <LoginLayout></LoginLayout>,
+       
         children: 
         [
             {
-                path: "/login",
+                path: "/auth/login",
                 element: <Login></Login>
             },
             {
-                path: "/register",
+                path: "/auth/register",
                 element: <Register></Register>
             },
+        
             
         
         ]

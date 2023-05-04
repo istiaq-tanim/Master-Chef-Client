@@ -56,7 +56,7 @@ const Header = () => {
                         </> :
                         <li className='text-[#757575] font-semibold font-displayRob'>
                             <NavLink
-                                to='/login'
+                                to='/auth/login'
                                 className={({ isActive }) => (isActive ? 'text-[#14b93d]' : '')}
                             >
                                 Login
@@ -118,7 +118,7 @@ const Header = () => {
                                         </li>
                                         <li>
                                             <Link
-                                                to='/login'
+                                                to='/auth/login'
                                                 className='font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-blue-400'
                                             >
                                                 Login

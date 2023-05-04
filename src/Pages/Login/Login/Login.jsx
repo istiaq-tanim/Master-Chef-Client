@@ -90,7 +90,7 @@ const Login = () => {
 
                         <button onClick={handleGoggle} className="btn btn-outline w-80  mx-auto my-2"><FaGoogle className='inline-block mr-2'></FaGoogle>Sign in With Google</button>
                         <button onClick={handleGithub} className="btn btn-outline w-80  mx-auto my-2"><FaGithub className='inline-block mr-2'></FaGithub>Sign in With Github</button>
-                        <p className='text-center'>New Member?<Link to="/register"><button className="btn btn-active px-1 py-0 btn-link">Please Register</button></Link></p>
+                        <p className='text-center'>New Member?<Link to="/auth/register"><button className="btn btn-active px-1 py-0 btn-link">Please Register</button></Link></p>
 
                     </div>
                 </div>
