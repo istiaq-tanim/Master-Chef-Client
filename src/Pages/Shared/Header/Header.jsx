@@ -52,7 +52,7 @@ const Header = () => {
                                     <img src={user.photoURL} />
                                 </div>
                             </label>
-                            <button onClick={handleLogOut} className='text-[#14b93d] font-semibold font-displayRob'>Sign out</button>
+                            <button onClick={handleLogOut} className=' btn btn-success py-0 px-2 font-displayRob'>Sign out</button>
                         </> :
                         <li className='text-[#757575] font-semibold font-displayRob'>
                             <NavLink
@@ -83,7 +83,7 @@ const Header = () => {
                                         <Link to='/' className='inline-flex items-center'>
 
                                             <span className='ml-2 text-2xl font-bold tracking-wide text-gray-800'>
-                                                Job<span className='text-[#1f2d91]'>Camp</span>
+                                                Master<span className='text-[#1f2d91]'>Chef</span>
                                             </span>
                                         </Link>
                                     </div>
