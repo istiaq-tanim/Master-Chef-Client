@@ -1,4 +1,4 @@
-import { createBrowserRouter } from "react-router-dom";
+import { Route, createBrowserRouter } from "react-router-dom";
 import Main from "../Layouts/main";
 import Home from "../Pages/Home/Home/Home";
 import Blog from "../Pages/Blogs/Blog";
@@ -14,6 +14,7 @@ const router = createBrowserRouter([
     {
         path: "/",
         element: <Main></Main>,
+        errorElement:<ErrorElement></ErrorElement>,
         children:
             [
                 {
@@ -29,8 +30,8 @@ const router = createBrowserRouter([
                     path:"/:id",
                     element:<PrivateRoute><Recipes></Recipes></PrivateRoute>,
                     loader:({params})=>fetch(`https://assignment-10-chef-server-istiaq-tanim.vercel.app/chefs/${params.id}`)
-                },
-                { path:"*" ,element:<ErrorElement></ErrorElement>}
+                }
+               
                
             ]
     },
@@ -47,7 +48,8 @@ const router = createBrowserRouter([
                 path: "/register",
                 element: <Register></Register>
             },
-            { path:"*" ,element:<ErrorElement></ErrorElement>}
+            
+        
         ]
     }
 ])

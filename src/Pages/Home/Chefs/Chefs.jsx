@@ -1,14 +1,17 @@
 import React from 'react';
 import { FaThumbsUp } from 'react-icons/fa';
+import LazyLoad from 'react-lazy-load';
 import { Link } from 'react-router-dom';
 
 const Chefs = ({ chef }) => {
-    const { id, name, profile_picture,experience, num_recipes,likes } = chef
+    const { id, name, profile_picture, experience, num_recipes, likes } = chef
     return (
         <div >
             <div className="max-w-md rounded overflow-hidden shadow-lg bg-white">
-                
-                <img className="w-full h-[360px] object-cover rounded" src={profile_picture} alt="Card image" />
+                <LazyLoad height={400} width={400} threshold={0.95}>
+                    <img className="w-full h-[360px] object-cover rounded" src={profile_picture} />
+                </LazyLoad>
+                {/* <img className="w-full h-[360px] object-cover rounded" src={profile_picture} alt="Card image" /> */}
                 <div className="px-6 py-4">
                     <div className="font-bold text-xl mb-2">Name: {name}</div>
                     <p className="text-gray-700 text-base mb-2 font-semibold">Years of experience: {experience} years</p>
