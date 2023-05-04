@@ -26,7 +26,8 @@ const ChefRecipe = ({ item }) => {
                         src={image} />
                     <div className="p-6">
                         <h3 className="text-lg font-medium mb-2">{name}</h3>
-                        <p className="text-gray-600">{cooking_method.slice(0, 100)}...</p>
+                        <Rating style={{ maxWidth: 100 }} value={Math.round(rating) || 0} readOnly />
+                        <p className="text-gray-600 mt-2">{cooking_method.slice(0, 100)}...</p>
                         <h5 className='font-bold text-lg my-2'>Ingredients :</h5>
                         <ul className='mt-1'>
                             {

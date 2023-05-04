@@ -32,7 +32,6 @@ const router = createBrowserRouter([
                     loader:({params})=>fetch(`https://assignment-10-chef-server-istiaq-tanim.vercel.app/chefs/${params.id}`)
                 }
                
-               
             ]
     },
     {
