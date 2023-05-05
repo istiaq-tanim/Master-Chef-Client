@@ -106,7 +106,7 @@ const Header = () => {
                                                 Home
                                             </Link>
                                         </li>
-                                      
+
 
                                         <li>
                                             <Link
@@ -116,14 +116,24 @@ const Header = () => {
                                                 Blogs
                                             </Link>
                                         </li>
-                                        <li>
-                                            <Link
-                                                to='/auth/login'
-                                                className='font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-blue-400'
-                                            >
-                                                Login
-                                            </Link>
-                                        </li>
+                                        {user ?
+                                            <>
+                                                <label tabIndex={0} className="btn btn-ghost btn-circle avatar tooltip-success tooltip" data-tip={user.displayName}>
+                                                    <div className="w-10 rounded-full" >
+                                                        <img src={user.photoURL} />
+                                                    </div>
+                                                </label>
+                                                <button onClick={handleLogOut} className=' btn btn-success py-0 px-2 font-displayRob'>Sign out</button>
+                                            </> :
+                                            <li className='text-[#757575] font-semibold font-displayRob'>
+                                                <NavLink
+                                                    to='/auth/login'
+                                                    className={({ isActive }) => (isActive ? 'text-[#14b93d]' : '')}
+                                                >
+                                                    Login
+                                                </NavLink>
+                                            </li>
+                                        }
                                     </ul>
                                 </nav>
                             </div>
